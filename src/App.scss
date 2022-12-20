@@ -1,4 +1,7 @@
 @use './styles/partials/reset';
+@use './styles/partials/typography';
 @use './styles/partials/all' as *;
 
-body {}
+body {
+  font-family: 'openSans', sans-serif;
+}

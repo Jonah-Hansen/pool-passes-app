@@ -1,9 +1,10 @@
+import Header from '../../components/Header/Header'
 import './SettingsPage.scss'
 
 export default function SettingsPage() {
   return (
-    <div>
-      settings page
-    </div>
+    <main>
+      <Header type='settings' />
+    </main>
   )
 }

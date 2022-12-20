@@ -11,11 +11,11 @@ export default function Header({ type }: HeaderProps) {
   return (
     <header className='header'>
       {type === 'settings' &&
-        <button onClick={() => navigate(-1)}>
+        <button className='header__back' onClick={() => navigate(-1)}>
           <MdArrowBack />
         </button>
       }
-      <h1>{type === 'settings' ? 'Settings' : 'Pool Passes'}</h1>
+      <h1 className='header__title'>{type === 'settings' ? 'Settings' : 'Pool Passes'}</h1>
       <Link to={type === 'settings' ? '/' : '/settings'} className='header__link' >
         {type === 'settings' ? <MdHome /> : <MdSettings />}
       </Link>

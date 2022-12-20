@@ -3,13 +3,33 @@
 .header {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
   padding: 1rem 2rem;
+  border-bottom: 2px solid $borders;
+  box-shadow: 0 1px 5px $borders;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
 
   &__link {
     display: flex;
     align-items: center;
     font-size: 3rem;
     width: fit-content;
+    color: $text-secondary;
+    filter: drop-shadow(1px 1px .5px black);
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  &__back {
+    @extend .header__link;
+    background: none;
+    border: none;
+    font-size: 2rem;
   }
 }

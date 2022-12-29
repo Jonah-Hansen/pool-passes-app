@@ -1,0 +1,25 @@
+@use '../../styles/partials/all' as *;
+
+.new-pass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: $edge-mobile;
+
+  &__field {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: $edge-mobile;
+    border: 2px solid $borders;
+
+    & legend {
+      padding: 0 .5rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}

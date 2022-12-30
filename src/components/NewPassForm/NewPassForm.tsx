@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import FormInput from '../FormInput/FormInput'
 import './NewPassForm.scss'
 
-export default function NewPassForm() {
+export default function NewPassForm({ close }: { close: () => void }) {
 
   useEffect(() => {
     //sets the first input to checked by default on first render
@@ -26,7 +26,7 @@ export default function NewPassForm() {
         <FormInput type='text' label='Phone:' name='phone' value='(306) ' />
       </fieldset>
       <div className='new-pass-form__buttons'>
-        <button type='reset' className='new-pass-form__cancel'>Cancel</button>
+        <button type='reset' className='new-pass-form__cancel' onClick={close}>Cancel</button>
         <button type='submit' className='new-pass-form__submit'>Submit</button>
       </div>
     </form>

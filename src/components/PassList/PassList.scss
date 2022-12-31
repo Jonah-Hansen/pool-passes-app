@@ -1,0 +1,39 @@
+@use '../../styles/partials/all' as *;
+
+.pass-list {
+  border: 2px solid $borders;
+
+  & th {
+    background-color: $borders;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: underline;
+  }
+
+  & td, th {
+    padding: .5rem 1rem;
+  }
+
+  & tr {
+    border-bottom: 2px solid $borders;
+  }
+}
+
+.columns {
+
+  &__first-name {
+    width: 8rem;
+  }
+
+  &__last-name {
+    width: 6rem;
+  }
+
+  &__type {
+    width: 4rem;
+  }
+
+  &__phone {
+    width: 10rem;
+  }
+}

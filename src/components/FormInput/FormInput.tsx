@@ -1,3 +1,4 @@
+import { Error } from '../../interfaces/error'
 import './FormInput.scss'
 
 interface FormInputProps {
@@ -5,10 +6,10 @@ interface FormInputProps {
   label: string,
   name: string,
   value?: string,
-
+  error?: Error,
 }
 
-export default function FormInput({ type, label, name, value }: FormInputProps) {
+export default function FormInput({ type, label, name, value, error }: FormInputProps) {
   return (
     <label className={`form-input__${type}`}>
       {type === 'radio' ?
@@ -21,6 +22,7 @@ export default function FormInput({ type, label, name, value }: FormInputProps) 
           <p>{label}</p>
           <input type={type} name={name} defaultValue={value} />
         </>}
+      {!error?.valid && <p>{error?.message}</p>}
     </label >
   )
 }

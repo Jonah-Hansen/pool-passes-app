@@ -1,5 +1,5 @@
 export interface Pass {
-  id: string,
+  id?: string,
   firstName: string,
   lastName: string,
   type: string,

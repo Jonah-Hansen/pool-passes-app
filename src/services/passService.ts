@@ -14,5 +14,6 @@ export const add = (newPass: Pass): Pass => {
   const all = getAll()
   newPass.id = uuid()
   all.push(newPass)
+  localStorage.setItem('passes', JSON.stringify(all))
   return newPass
 }

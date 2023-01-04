@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react'
+import { usePasses } from '../../context/PassProvider'
 // import { populateTestData } from '../../helpers/testData'
-import { Pass } from '../../interfaces/passes'
-import * as passService from '../../services/passService'
+
 import './PassList.scss'
 
 export default function PassList() {
 
+  const { passes } = usePasses()
   // populateTestData()
-
-  const [passes, setPasses] = useState<Pass[]>([])
-
-  useEffect(() => {
-    setPasses(passService.getAll)
-  }, [])
 
   return (
     <table className='pass-list'>

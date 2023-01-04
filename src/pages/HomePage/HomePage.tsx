@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import Header from '../../components/Header/Header'
 import NewPassForm from '../../components/NewPassForm/NewPassForm'
 import PassList from '../../components/PassList/PassList'
+import PassProvider from '../../context/PassProvider'
 import './HomePage.scss'
 
 export default function HomePage() {
@@ -20,10 +21,12 @@ export default function HomePage() {
     <main>
       <Header />
       <button type='button' onClick={openForm}>+ Add New Pass</button>
-      <PassList />
-      <Modal isOpen={formOpen} onRequestClose={closeForm} appElement={document.getElementById('root') || undefined} contentLabel='new pass form' >
-        <NewPassForm close={closeForm} />
-      </Modal>
+      <PassProvider >
+        <PassList />
+        <Modal isOpen={formOpen} onRequestClose={closeForm} appElement={document.getElementById('root') || undefined} contentLabel='new pass form' >
+          <NewPassForm close={closeForm} />
+        </Modal>
+      </PassProvider>
     </main>
   )
 }

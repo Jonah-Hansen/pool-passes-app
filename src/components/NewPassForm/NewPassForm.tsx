@@ -50,7 +50,7 @@ export default function NewPassForm({ close }: { close: () => void }) {
       })
       return
     }
-
+    newPass.phone = validate.phone(newPass.phone).message
     passService.add(newPass)
     setPasses(passService.getAll())
     close()

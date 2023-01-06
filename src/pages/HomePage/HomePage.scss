@@ -1,0 +1,43 @@
+@use '../../styles/partials/all' as *;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 $edge-mobile;
+
+  }
+}
+
+.new-pass-btn {
+  border: none;
+  background-color: $cta;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 50px;
+  width: fit-content;
+
+  &:hover {
+    filter: brightness(.75);
+  }
+}
+
+.modal {
+  position: absolute;
+  inset: 2.5rem;
+  border: 1px solid $borders;
+  border-radius: 4px;
+  padding: 1.25rem;
+  background-color: white;
+  height: fit-content;
+
+  &__overlay {
+    background-color: rgba($color: $text-secondary, $alpha: .5);
+    position: fixed;
+    inset: 0px;
+  }
+}

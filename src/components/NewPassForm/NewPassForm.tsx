@@ -27,7 +27,7 @@ export default function NewPassForm({ close }: { close: () => void }) {
 
   //sets the first input to checked by default on first render
   useEffect(() => {
-    document.querySelector('input')?.setAttribute('checked', '')
+    document.querySelector('input[type="radio"]')?.setAttribute('checked', '')
   }, [])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

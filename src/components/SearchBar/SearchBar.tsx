@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+import { MdSearch } from 'react-icons/md'
 import { usePasses } from '../../context/PassProvider'
 import * as passService from '../../services/passService'
 import './SearchBar.scss'
@@ -13,9 +14,10 @@ export default function SearchBar() {
   }
 
   return (
-    <label>
-      <p>Search by name, type or phone number</p>
-      <input type="search" onChange={handleSearch} />
+    <label className='search-bar'>
+      <p className='search-bar__label'>Search by name, type or phone number</p>
+      <MdSearch className='search-bar__icon' />
+      <input className='search-bar__input' type="search" onChange={handleSearch} />
     </label>
   )
 }

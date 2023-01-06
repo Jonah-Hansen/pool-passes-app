@@ -20,13 +20,17 @@ export default function HomePage() {
   }
 
   return (
-    <main>
+    <main className='home-page'>
       <Header />
-      <button type='button' onClick={openForm}>+ Add New Pass</button>
       <PassProvider >
-        <SearchBar />
+        <div className='home-page__actions'>
+          <SearchBar />
+          <button type='button' onClick={openForm} className='new-pass-btn' >
+            + Add New Pass
+          </button>
+        </div>
         <PassList />
-        <Modal isOpen={formOpen} onRequestClose={closeForm} appElement={document.getElementById('root') || undefined} contentLabel='new pass form' >
+        <Modal className='modal' overlayClassName='modal__overlay' isOpen={formOpen} onRequestClose={closeForm} appElement={document.getElementById('root') || undefined} contentLabel='new pass form' >
           <NewPassForm close={closeForm} />
         </Modal>
       </PassProvider>

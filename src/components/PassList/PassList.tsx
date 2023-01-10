@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import { usePasses } from '../../context/PassProvider'
+import { Pass } from '../../interfaces/passes'
+import SortButton from '../SortButton/SortButton'
 // import { populateTestData } from '../../helpers/testData'
 
 import './PassList.scss'
@@ -6,7 +9,13 @@ import './PassList.scss'
 export default function PassList() {
 
   const { passes } = usePasses()
-  // populateTestData()
+  const [shownPasses, setShownPasses] = useState(passes)
+  const [sort, setSort] = useState<keyof Pass>('lastName')
+
+  useEffect(() => {
+    const passesCopy = [...passes]
+    setShownPasses(passesCopy.sort((a, b) => a[sort]!.toLowerCase() < b[sort]!.toLowerCase() ? -1 : 1))
+  }, [passes, sort])
 
   return (
     <table className='pass-list'>
@@ -18,14 +27,25 @@ export default function PassList() {
       </colgroup>
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Type</th>
-          <th>Phone</th>
+          <th>
+            First Name
+            <SortButton field='firstName' sort={sort} setSort={setSort} />
+          </th>
+          <th>
+            Last Name
+            <SortButton field='lastName' sort={sort} setSort={setSort} />
+          </th>
+          <th>
+            Type
+            <SortButton field='type' sort={sort} setSort={setSort} />
+          </th>
+          <th>
+            Phone
+          </th>
         </tr>
       </thead>
       <tbody>
-        {passes.map(pass =>
+        {shownPasses.map(pass =>
           <tr key={pass.id}>
             <td>{pass.firstName}</td>
             <td>{pass.lastName}</td>

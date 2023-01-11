@@ -6,4 +6,16 @@
     display: flex;
     gap: .25rem;
   }
+
+  &__checkbox {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+
+    & input {
+      height: 1rem;
+      width: 1rem;
+      margin: 0;
+    }
+  }
 }

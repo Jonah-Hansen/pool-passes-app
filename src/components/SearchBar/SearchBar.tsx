@@ -17,7 +17,7 @@ export default function SearchBar() {
     <label className='search-bar'>
       <p className='search-bar__label'>Search by name, type or phone number</p>
       <MdSearch className='search-bar__icon' />
-      <input className='search-bar__input' type="search" onChange={handleSearch} />
+      <input className='search-bar__input' type="search" placeholder='Search' onChange={handleSearch} />
     </label>
   )
 }

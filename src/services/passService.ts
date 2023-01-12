@@ -17,3 +17,12 @@ export const add = (newPass: Pass): Pass => {
   localStorage.setItem('passes', JSON.stringify(all))
   return newPass
 }
+
+export const clear = () => {
+  if (
+    window.confirm('are you sure you want to delete all passes? This action cannot be undone.')
+  ) {
+    localStorage.removeItem('passes')
+    alert('all passes have been removed')
+  }
+}

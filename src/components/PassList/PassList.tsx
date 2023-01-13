@@ -5,6 +5,7 @@ import SortButton from '../SortButton/SortButton'
 // import { populateTestData } from '../../helpers/testData'
 
 import './PassList.scss'
+import PassListBody from './PassListBody/PassListBody'
 
 export default function PassList() {
 
@@ -44,16 +45,7 @@ export default function PassList() {
           </th>
         </tr>
       </thead>
-      <tbody>
-        {shownPasses.map(pass =>
-          <tr key={pass.id}>
-            <td>{pass.firstName}</td>
-            <td>{pass.lastName}</td>
-            <td>{pass.type}</td>
-            <td>{pass.phone}</td>
-          </tr>
-        )}
-      </tbody>
+      <PassListBody shownPasses={shownPasses} />
     </table>
   )
 }

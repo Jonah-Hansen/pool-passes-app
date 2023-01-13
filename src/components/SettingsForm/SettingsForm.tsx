@@ -1,25 +1,10 @@
-import { useState } from 'react'
+import { useSettings } from '../../context/SettingsProvider'
 import * as passService from '../../services/passService'
 import './SettingsForm.scss'
 
-interface Settings {
-  edit: boolean,
-}
-
-const defaultSettings: Settings = {
-  edit: false,
-
-}
-
 export default function SettingsForm() {
 
-  const [settings, setSettings] = useState<Settings>(defaultSettings)
-
-  const toggleSetting = (setting: keyof Settings): void => {
-    const newSettings = { ...settings }
-    newSettings[setting] = !newSettings[setting]
-    setSettings(newSettings)
-  }
+  const { settings, toggleSetting } = useSettings()
 
   return (
     <form className='settings-form'>

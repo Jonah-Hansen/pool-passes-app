@@ -1,22 +1,48 @@
 import { FormEvent, useState } from 'react'
 import { MdCheck, MdClose, MdEdit } from 'react-icons/md'
+import { usePasses } from '../../../context/PassProvider'
 import { useSettings } from '../../../context/SettingsProvider'
+import * as validate from '../../../helpers/validateInput'
+import { defaultErrorState, ErrorState } from '../../../interfaces/error'
 import { Pass } from '../../../interfaces/passes'
+import * as passService from '../../../services/passService'
+
 
 export default function PassListRow({ pass }: { pass: Pass }) {
 
   const { settings } = useSettings()
+  const { setPasses } = usePasses()
 
   const [edit, setEdit] = useState(false)
+  const [error, setError] = useState<ErrorState>(defaultErrorState)
 
   const [newPass, setNewPass] = useState(pass)
 
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget);
+  const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     const editedPass = { ...newPass }
     editedPass[e.currentTarget.name as keyof Pass] = e.currentTarget.value
     setNewPass(editedPass)
   }
+
+  const handleConfirm = () => {
+    if (
+      !validate.name(newPass.firstName).valid
+      || !validate.name(newPass.lastName).valid
+      || !validate.phone(newPass.phone).valid
+    ) {
+      setError({
+        firstName: validate.name(newPass.firstName),
+        lastName: validate.name(newPass.lastName),
+        phone: validate.phone(newPass.phone),
+      })
+      return
+    }
+    newPass.phone = validate.phone(newPass.phone).message
+    passService.update(newPass)
+    setPasses(passService.getAll())
+    setEdit(false)
+  }
+
 
   return (
     <>
@@ -43,10 +69,10 @@ export default function PassListRow({ pass }: { pass: Pass }) {
             <input type="text" name="firstName" value={newPass.firstName} onChange={handleChange} />
           </td>
           <td>
-            <input type="text" name="lastName" defaultValue={pass.lastName} />
+            <input type="text" name="lastName" value={newPass.lastName} onChange={handleChange} />
           </td>
           <td>
-            <select name="type" defaultValue={pass.type} >
+            <select name="type" value={newPass.type} onChange={handleChange} >
               <option value="family">Family</option>
               <option value="adult">Adult</option>
               <option value="student">Student</option>
@@ -55,16 +81,16 @@ export default function PassListRow({ pass }: { pass: Pass }) {
             </select>
           </td>
           <td>
-            <input type="text" name="phone" defaultValue={pass.phone} />
+            <input type="text" name="phone" value={newPass.phone} onChange={handleChange} />
           </td>
           <td>
-            <button type='button' >
+            <button type='button' onClick={() => handleConfirm()}  >
               <MdCheck />
             </button>
           </td>
           <td>
-            <button type='button' >
-              <MdClose onClick={() => setEdit(false)} />
+            <button type='button' onClick={() => setEdit(false)} >
+              <MdClose />
             </button>
           </td>
         </tr>

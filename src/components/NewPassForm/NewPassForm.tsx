@@ -1,24 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { usePasses } from '../../context/PassProvider'
 import * as validate from '../../helpers/validateInput'
-import { Error } from '../../interfaces/error'
+import { defaultErrorState, ErrorState } from '../../interfaces/error'
 import { Pass } from '../../interfaces/passes'
 import * as passService from '../../services/passService'
 import FormInput from '../FormInput/FormInput'
 import './NewPassForm.scss'
 
-
-interface ErrorState {
-  firstName: Error,
-  lastName: Error,
-  phone: Error,
-}
-
-const defaultErrorState = {
-  firstName: { valid: true, message: '' },
-  lastName: { valid: true, message: '' },
-  phone: { valid: true, message: '' },
-}
 
 export default function NewPassForm({ close }: { close: () => void }) {
 

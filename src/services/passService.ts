@@ -26,3 +26,10 @@ export const clear = () => {
     alert('all passes have been removed')
   }
 }
+
+export const update = (newPass: Pass) => {
+  const all = getAll()
+  const originalIndex = all.indexOf(all.filter(pass => pass.id === newPass.id)[0])
+  all.splice(originalIndex, 1, newPass)
+  localStorage.setItem('passes', JSON.stringify(all))
+}

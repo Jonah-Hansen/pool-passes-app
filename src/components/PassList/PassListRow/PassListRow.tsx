@@ -67,9 +67,11 @@ export default function PassListRow({ pass }: { pass: Pass }) {
         <tr>
           <td>
             <input type="text" name="firstName" value={newPass.firstName} onChange={handleChange} />
+            {!error.firstName.valid && <p>{error.firstName.message}</p>}
           </td>
           <td>
             <input type="text" name="lastName" value={newPass.lastName} onChange={handleChange} />
+            {!error.lastName.valid && <p>{error.lastName.message}</p>}
           </td>
           <td>
             <select name="type" value={newPass.type} onChange={handleChange} >
@@ -82,6 +84,7 @@ export default function PassListRow({ pass }: { pass: Pass }) {
           </td>
           <td>
             <input type="text" name="phone" value={newPass.phone} onChange={handleChange} />
+            {!error.phone.valid && <p>{error.phone.message}</p>}
           </td>
           <td>
             <button type='button' onClick={() => handleConfirm()}  >

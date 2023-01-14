@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react'
 import { usePasses } from '../../context/PassProvider'
 import { Pass } from '../../interfaces/passes'
 import SortButton from '../SortButton/SortButton'
-// import { populateTestData } from '../../helpers/testData'
-
 import './PassList.scss'
-import PassListBody from './PassListBody/PassListBody'
+import PassListRow from './PassListRow/PassListRow'
 
 export default function PassList() {
 
@@ -45,7 +43,11 @@ export default function PassList() {
           </th>
         </tr>
       </thead>
-      <PassListBody shownPasses={shownPasses} />
+      <tbody>
+        {shownPasses.map(pass =>
+          <PassListRow key={pass.id} pass={pass} />
+        )}
+      </tbody>
     </table>
   )
 }

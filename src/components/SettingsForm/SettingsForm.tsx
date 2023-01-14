@@ -9,7 +9,7 @@ export default function SettingsForm() {
   return (
     <form className='settings-form'>
       <label className='settings-form__setting'>
-        <p>Editor Mode</p>
+        <p>Allow Editing</p>
         <input type="checkbox" onChange={() => toggleSetting('edit')} checked={settings.edit} />
       </label>
 

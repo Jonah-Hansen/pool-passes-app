@@ -3,7 +3,7 @@ import './FormInput.scss'
 
 interface FormInputProps {
   type: string,
-  label: string,
+  label?: string,
   name: string,
   value?: string,
   error?: Error,
@@ -19,7 +19,7 @@ export default function FormInput({ type, label, name, value, error }: FormInput
         </>
         :
         <>
-          <p>{label}</p>
+          {label && <p>{label}</p>}
           <input type={type} name={name} defaultValue={value} />
         </>}
       {!error?.valid && <p>{error?.message}</p>}

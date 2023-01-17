@@ -13,9 +13,10 @@ export default function NewPassForm({ close }: { close: () => void }) {
   const [error, setError] = useState<ErrorState>(defaultErrorState)
   const { setPasses } = usePasses()
 
-  //sets the first input to checked by default on first render
+  //sets the first input to checked by default on first render, and focuses the first name field
   useEffect(() => {
     document.querySelector('input[type="radio"]')?.setAttribute('checked', '')
+    document.querySelector<HTMLElement>('input[name="firstName"]')?.focus()
   }, [])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

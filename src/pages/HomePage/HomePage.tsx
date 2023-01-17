@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MdExpandLess } from 'react-icons/md'
 import Modal from 'react-modal'
 import Header from '../../components/Header/Header'
 import NewPassForm from '../../components/NewPassForm/NewPassForm'
@@ -10,7 +11,7 @@ import './HomePage.scss'
 export default function HomePage() {
 
   const [formOpen, setFormOpen] = useState<boolean>(false)
-
+  const [topButton, setTopButton] = useState<boolean>(false)
 
   const openForm = (): void => {
     setFormOpen(true)
@@ -18,6 +19,11 @@ export default function HomePage() {
   const closeForm = (): void => {
     setFormOpen(false)
   }
+
+  setInterval(() => {
+    if (window.scrollY > 215) setTopButton(true)
+    else setTopButton(false)
+  }, 250)
 
   return (
     <main className='home-page'>
@@ -34,6 +40,12 @@ export default function HomePage() {
           <NewPassForm close={closeForm} />
         </Modal>
       </PassProvider>
+      {topButton &&
+        <button type='button' className='home-page__to-top' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} >
+
+          <MdExpandLess />
+        </button>
+      }
     </main>
   )
 }

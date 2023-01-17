@@ -9,7 +9,31 @@
     display: flex;
     justify-content: space-between;
     padding: 0 $edge-mobile;
+  }
 
+  &__to-top {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2rem;
+    background-color: $cta;
+    border: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    color: white;
+
+    animation: fadeIn ease-out .5s;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

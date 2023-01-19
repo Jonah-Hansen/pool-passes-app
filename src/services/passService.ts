@@ -19,17 +19,19 @@ export const add = (newPass: Pass): Pass => {
 }
 
 export const clear = () => {
-  if (
-    window.confirm('are you sure you want to delete all passes? This action cannot be undone.')
-  ) {
-    localStorage.removeItem('passes')
-    alert('all passes have been removed')
-  }
+  localStorage.removeItem('passes')
 }
 
 export const update = (newPass: Pass) => {
   const all = getAll()
-  const originalIndex = all.indexOf(all.filter(pass => pass.id === newPass.id)[0])
+  const originalIndex = all.findIndex(pass => pass.id === newPass.id)
   all.splice(originalIndex, 1, newPass)
+  localStorage.setItem('passes', JSON.stringify(all))
+}
+
+export const remove = (id: Pass['id']) => {
+  const all = getAll()
+  const originalIndex = all.findIndex(pass => pass.id === id)
+  all.splice(originalIndex, 1)
   localStorage.setItem('passes', JSON.stringify(all))
 }

@@ -3,6 +3,7 @@ import { Settings } from "../interfaces/Settings"
 
 const defaultSettings: Settings = {
   edit: false,
+  delete: false,
 }
 
 const settingsContext = createContext({ settings: defaultSettings, toggleSetting: (setting: keyof Settings) => { } })

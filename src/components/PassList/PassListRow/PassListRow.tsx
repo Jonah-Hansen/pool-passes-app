@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { MdCheck, MdClose, MdEdit } from 'react-icons/md'
+import { MdCheck, MdClose, MdDelete, MdEdit } from 'react-icons/md'
 import { usePasses } from '../../../context/PassProvider'
 import { useSettings } from '../../../context/SettingsProvider'
 import * as validate from '../../../helpers/validateInput'
@@ -48,6 +48,13 @@ export default function PassListRow({ pass }: { pass: Pass }) {
     setEdit(false)
   }
 
+  const handleDelete = () => {
+    if (window.confirm(`are you sure you want to delete ${pass.firstName} ${pass.lastName}`)) {
+      passService.remove(pass.id)
+      setPasses(passService.getAll())
+    }
+  }
+
 
   return (
     <>
@@ -64,9 +71,13 @@ export default function PassListRow({ pass }: { pass: Pass }) {
               </button>
             </td>
           }
-          {/* {settings.delete &&
-            <td><button type='button'><MdDelete /></button></td>
-          } */}
+          {settings.delete &&
+            <td>
+              <button type='button' onClick={handleDelete} >
+                <MdDelete />
+              </button>
+            </td>
+          }
         </tr>
         :
         <tr>

@@ -2,5 +2,7 @@
 
 .footer {
   padding: 3rem $edge-mobile 1rem;
-  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

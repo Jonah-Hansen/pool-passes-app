@@ -6,12 +6,14 @@ import NewPassForm from '../../components/NewPassForm/NewPassForm'
 import PassList from '../../components/PassList/PassList'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import PassProvider from '../../context/PassProvider'
+import { useSettings } from '../../context/SettingsProvider'
 import './HomePage.scss'
 
 export default function HomePage() {
 
   const [formOpen, setFormOpen] = useState<boolean>(false)
   const [topButton, setTopButton] = useState<boolean>(false)
+  const { settings, toggleSetting } = useSettings()
 
   const openForm = (): void => {
     setFormOpen(true)
@@ -35,6 +37,19 @@ export default function HomePage() {
             + Add New Pass
           </button>
         </div>
+        <div className='home-page__settings'>
+          {settings.edit &&
+            <button className='home-page__settings-btn' onClick={() => toggleSetting('edit')}>
+              Done Editing
+            </button>
+          }
+          {settings.delete &&
+            <button className='home-page__settings-btn' onClick={() => toggleSetting('delete')}>
+              Done Deleting
+            </button>
+          }
+        </div>
+
         <PassList />
         <Modal className='modal' overlayClassName='modal__overlay' isOpen={formOpen} onRequestClose={closeForm} appElement={document.getElementById('root') || undefined} contentLabel='new pass form' >
           <NewPassForm close={closeForm} />

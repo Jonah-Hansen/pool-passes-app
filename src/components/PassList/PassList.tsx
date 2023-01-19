@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { usePasses } from '../../context/PassProvider'
+import { useSettings } from '../../context/SettingsProvider'
 import { Pass } from '../../interfaces/passes'
 import SortButton from '../SortButton/SortButton'
 import './PassList.scss'
@@ -8,6 +9,7 @@ import PassListRow from './PassListRow/PassListRow'
 export default function PassList() {
 
   const { passes } = usePasses()
+  const { settings } = useSettings()
   const [shownPasses, setShownPasses] = useState(passes)
   const [sort, setSort] = useState<keyof Pass>('lastName')
 
@@ -23,6 +25,7 @@ export default function PassList() {
         <col className='columns__last-name' />
         <col className='columns__type' />
         <col className='columns__phone' />
+        <col className='columns__actions' />
       </colgroup>
       <thead>
         <tr>
@@ -41,6 +44,11 @@ export default function PassList() {
           <th>
             Phone
           </th>
+          {(settings.delete || settings.edit) &&
+            <th>
+              Actions
+            </th>
+          }
         </tr>
       </thead>
       <tbody>

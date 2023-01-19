@@ -64,18 +64,18 @@ export default function PassListRow({ pass }: { pass: Pass }) {
           <td>{pass.lastName}</td>
           <td>{pass.type}</td>
           <td>{pass.phone}</td>
-          {settings.edit &&
+          {(settings.delete || settings.edit) &&
             <td>
-              <button type='button' onClick={() => setEdit(true)}>
-                <MdEdit />
-              </button>
-            </td>
-          }
-          {settings.delete &&
-            <td>
-              <button type='button' onClick={handleDelete} >
-                <MdDelete />
-              </button>
+              {settings.edit &&
+                <button type='button' onClick={() => setEdit(true)}>
+                  <MdEdit />
+                </button>
+              }
+              {settings.delete &&
+                <button type='button' onClick={handleDelete} >
+                  <MdDelete />
+                </button>
+              }
             </td>
           }
         </tr>
@@ -106,8 +106,6 @@ export default function PassListRow({ pass }: { pass: Pass }) {
             <button type='button' onClick={handleConfirm}  >
               <MdCheck />
             </button>
-          </td>
-          <td>
             <button type='button' onClick={handleCancel} >
               <MdClose />
             </button>

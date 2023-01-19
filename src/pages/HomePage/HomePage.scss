@@ -11,6 +11,25 @@
     padding: 0 $edge-mobile;
   }
 
+  &__settings {
+    display: flex;
+    gap: 1rem;
+    padding: 0 $edge-mobile;
+
+    &-btn {
+      border: none;
+      background-color: $danger;
+      color: white;
+      padding: .5rem 1rem;
+      border-radius: 50px;
+      width: fit-content;
+
+      &:hover {
+        filter: brightness(1.25);
+      }
+    }
+  }
+
   &__to-top {
     position: fixed;
     bottom: 2.5rem;

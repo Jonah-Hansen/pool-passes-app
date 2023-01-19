@@ -11,7 +11,7 @@ import * as passService from '../../../services/passService'
 export default function PassListRow({ pass }: { pass: Pass }) {
 
   const { settings } = useSettings()
-  const { setPasses } = usePasses()
+  const { passes, setPasses } = usePasses()
 
   const [edit, setEdit] = useState(false)
   const [error, setError] = useState<ErrorState>(defaultErrorState)
@@ -40,6 +40,11 @@ export default function PassListRow({ pass }: { pass: Pass }) {
     newPass.phone = validate.phone(newPass.phone).message
     passService.update(newPass)
     setPasses(passService.getAll())
+    setEdit(false)
+  }
+
+  const handleCancel = () => {
+    setNewPass(passes[passes.findIndex(pass => pass.id === newPass.id)])
     setEdit(false)
   }
 
@@ -87,12 +92,12 @@ export default function PassListRow({ pass }: { pass: Pass }) {
             {!error.phone.valid && <p>{error.phone.message}</p>}
           </td>
           <td>
-            <button type='button' onClick={() => handleConfirm()}  >
+            <button type='button' onClick={handleConfirm}  >
               <MdCheck />
             </button>
           </td>
           <td>
-            <button type='button' onClick={() => setEdit(false)} >
+            <button type='button' onClick={handleCancel} >
               <MdClose />
             </button>
           </td>

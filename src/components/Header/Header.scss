@@ -8,6 +8,14 @@
   border-bottom: 2px solid $borders;
   box-shadow: 0 1px 5px $borders;
 
+  @include tablet {
+    padding: 1rem $edge-tablet;
+  }
+
+  @include desktop {
+    padding: 1rem $edge-desktop;
+  }
+
   &__title {
     font-size: 2rem;
     font-weight: 700;

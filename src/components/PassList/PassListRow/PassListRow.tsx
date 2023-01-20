@@ -8,6 +8,7 @@ import * as validate from '../../../helpers/validateInput'
 import { defaultErrorState, ErrorState } from '../../../interfaces/error'
 import { Pass } from '../../../interfaces/passes'
 import * as passService from '../../../services/passService'
+import './PassListRow.scss'
 
 
 export default function PassListRow({ pass }: { pass: Pass }) {
@@ -78,14 +79,14 @@ export default function PassListRow({ pass }: { pass: Pass }) {
           <td>{pass.type}</td>
           <td>{pass.phone}</td>
           {(settings.delete || settings.edit) &&
-            <td>
+            <td className='row__actions'>
               {settings.edit &&
-                <button type='button' onClick={() => setEdit(true)}>
+                <button className='row__action row__action--confirm' type='button' onClick={() => setEdit(true)}>
                   <MdEdit />
                 </button>
               }
               {settings.delete &&
-                <button type='button' onClick={handleDelete} >
+                <button className='row__action row__action--cancel' type='button' onClick={handleDelete} >
                   <MdDelete />
                 </button>
               }
@@ -95,11 +96,11 @@ export default function PassListRow({ pass }: { pass: Pass }) {
         :
         <tr>
           <td>
-            <input type="text" name="firstName" value={newPass.firstName} onChange={handleChange} />
+            <input className='row__input' type="text" name="firstName" value={newPass.firstName} onChange={handleChange} />
             {!error.firstName.valid && <p>{error.firstName.message}</p>}
           </td>
           <td>
-            <input type="text" name="lastName" value={newPass.lastName} onChange={handleChange} />
+            <input className='row__input' type="text" name="lastName" value={newPass.lastName} onChange={handleChange} />
             {!error.lastName.valid && <p>{error.lastName.message}</p>}
           </td>
           <td>
@@ -112,14 +113,14 @@ export default function PassListRow({ pass }: { pass: Pass }) {
             </select>
           </td>
           <td>
-            <input type="text" name="phone" value={newPass.phone} onChange={handleChange} />
+            <input className='row__input' type="text" name="phone" value={newPass.phone} onChange={handleChange} />
             {!error.phone.valid && <p>{error.phone.message}</p>}
           </td>
-          <td>
-            <button type='button' onClick={handleConfirm}  >
+          <td className='row__actions'>
+            <button className='row__action row__action--confirm' type='button' onClick={handleConfirm}  >
               <MdCheck />
             </button>
-            <button type='button' onClick={handleCancel} >
+            <button className='row__action row__action--cancel' type='button' onClick={handleCancel} >
               <MdClose />
             </button>
           </td>

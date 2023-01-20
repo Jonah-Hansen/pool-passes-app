@@ -9,12 +9,28 @@
     display: flex;
     justify-content: space-between;
     padding: 0 $edge-mobile;
+
+    @include tablet {
+      padding: 0 $edge-tablet;
+    }
+
+    @include desktop {
+      padding: 0 $edge-desktop;
+    }
   }
 
   &__settings {
     display: flex;
     gap: 1rem;
     padding: 0 $edge-mobile;
+
+    @include tablet {
+      padding: 0 $edge-tablet;
+    }
+
+    @include desktop {
+      padding: 0 $edge-desktop;
+    }
 
     &-btn {
       border: none;

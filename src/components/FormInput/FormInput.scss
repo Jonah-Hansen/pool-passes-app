@@ -1,0 +1,9 @@
+@use '../../styles/partials/all' as *;
+
+.form-input {
+
+  &__radio {
+    display: flex;
+    gap: .25rem;
+  }
+}

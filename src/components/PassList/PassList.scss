@@ -1,0 +1,53 @@
+@use '../../styles/partials/all' as *;
+
+.pass-list {
+  border: 2px solid $borders;
+  margin: 0 $edge-mobile;
+
+  @include tablet {
+    margin: 0 $edge-tablet;
+  }
+
+  @include desktop {
+    margin: 0 $edge-desktop;
+  }
+
+  & th {
+    background-color: $borders;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: underline;
+  }
+
+  & td, th {
+    padding: .5rem 0;
+    padding-left: 1rem;
+  }
+
+  & tr {
+    border-bottom: 2px solid $borders;
+  }
+}
+
+.columns {
+
+  &__first-name {
+    min-width: 8.25rem;
+  }
+
+  &__last-name {
+    min-width: 8rem;
+  }
+
+  &__type {
+    min-width: 5.5rem;
+  }
+
+  &__phone {
+    min-width: 8rem;
+  }
+
+  &__actions {
+    min-width: 5.5rem;
+  }
+}

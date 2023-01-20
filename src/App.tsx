@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { HashRouter, Route, Routes } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import './App.scss';
+import SettingsProvider from "./context/SettingsProvider";
+import HomePage from "./pages/HomePage/HomePage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SettingsProvider >
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Routes>
+      </HashRouter>
+    </SettingsProvider>
   );
 }
 

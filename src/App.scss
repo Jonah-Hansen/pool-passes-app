@@ -1,0 +1,8 @@
+@use './styles/partials/reset';
+@use './styles/partials/typography';
+@use './styles/partials/all' as *;
+
+body {
+  font-family: 'openSans', sans-serif;
+  color: $text-primary;
+}

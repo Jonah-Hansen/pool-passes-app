@@ -1,0 +1,43 @@
+@use '../../styles/partials/all' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem $edge-mobile;
+  border-bottom: 2px solid $borders;
+  box-shadow: 0 1px 5px $borders;
+
+  @include tablet {
+    padding: 1rem $edge-tablet;
+  }
+
+  @include desktop {
+    padding: 1rem $edge-desktop;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    width: fit-content;
+    color: $text-secondary;
+    filter: drop-shadow(1px 1px .5px black);
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  &__back {
+    @extend .header__link;
+    background: none;
+    border: none;
+    font-size: 2rem;
+  }
+}

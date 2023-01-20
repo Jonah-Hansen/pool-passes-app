@@ -1,0 +1,102 @@
+@use '../../styles/partials/all' as *;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 $edge-mobile;
+
+    @include tablet {
+      padding: 0 $edge-tablet;
+    }
+
+    @include desktop {
+      padding: 0 $edge-desktop;
+    }
+  }
+
+  &__settings {
+    display: flex;
+    gap: 1rem;
+    padding: 0 $edge-mobile;
+
+    @include tablet {
+      padding: 0 $edge-tablet;
+    }
+
+    @include desktop {
+      padding: 0 $edge-desktop;
+    }
+
+    &-btn {
+      border: none;
+      background-color: $danger;
+      color: white;
+      padding: .5rem 1rem;
+      border-radius: 50px;
+      width: fit-content;
+
+      &:hover {
+        filter: brightness(1.25);
+      }
+    }
+  }
+
+  &__to-top {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2rem;
+    background-color: $cta;
+    border: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    color: white;
+
+    animation: fadeIn ease-out .5s;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.new-pass-btn {
+  border: none;
+  background-color: $cta;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 50px;
+  width: fit-content;
+
+  &:hover {
+    filter: brightness(1.25);
+  }
+}
+
+.modal {
+  position: absolute;
+  inset: 2.5rem;
+  border: 1px solid $borders;
+  border-radius: 4px;
+  padding: 1.25rem;
+  background-color: white;
+  height: fit-content;
+
+  &__overlay {
+    background-color: rgba($color: $text-secondary, $alpha: .5);
+    position: fixed;
+    inset: 0px;
+  }
+}

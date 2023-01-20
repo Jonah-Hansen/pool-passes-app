@@ -1,0 +1,8 @@
+@use '../../styles/partials/all' as *;
+
+.footer {
+  padding: 3rem $edge-mobile 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

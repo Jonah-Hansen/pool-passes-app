@@ -1,0 +1,27 @@
+@use '../../../styles/partials/all' as *;
+
+.row {
+
+  &__action {
+    border: none;
+    background-color: transparent;
+    font-size: 1.25rem;
+
+    &--confirm {
+      color: $cta;
+    }
+
+    &--cancel {
+      color: $danger;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: .5rem;
+  }
+
+  &__input {
+    width: 100%;
+  }
+}

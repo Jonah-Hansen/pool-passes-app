@@ -1,3 +1,4 @@
+import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'
 import { useSettings } from '../../context/SettingsProvider'
 import * as passService from '../../services/passService'
@@ -9,12 +10,21 @@ export default function SettingsForm() {
   const { settings, toggleSetting } = useSettings()
 
   const handleClear = () => {
-    if (
-      window.confirm('are you sure you want to delete all passes? This action cannot be undone.')
-    ) {
-      passService.clear()
-      toast('all passes have been removed')
-    }
+    confirmAlert({
+      message: 'are you sure you want to delete all passes? This action cannot be undone.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            passService.clear()
+            toast('all passes have been removed')
+          }
+        },
+        {
+          label: 'cancel',
+        }
+      ]
+    })
   }
 
   return (

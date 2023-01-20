@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { MdCheck, MdClose, MdDelete, MdEdit } from 'react-icons/md'
+import { toast, ToastContainer } from 'react-toastify'
 import { usePasses } from '../../../context/PassProvider'
 import { useSettings } from '../../../context/SettingsProvider'
 import * as validate from '../../../helpers/validateInput'
@@ -52,9 +53,9 @@ export default function PassListRow({ pass }: { pass: Pass }) {
     if (window.confirm(`are you sure you want to delete ${pass.firstName} ${pass.lastName}`)) {
       passService.remove(pass.id)
       setPasses(passService.getAll())
+      toast(`deleted ${pass.firstName} ${pass.lastName}`)
     }
   }
-
 
   return (
     <>

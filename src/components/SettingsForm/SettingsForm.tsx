@@ -1,5 +1,7 @@
+import { toast } from 'react-toastify'
 import { useSettings } from '../../context/SettingsProvider'
 import * as passService from '../../services/passService'
+
 import './SettingsForm.scss'
 
 export default function SettingsForm() {
@@ -11,7 +13,7 @@ export default function SettingsForm() {
       window.confirm('are you sure you want to delete all passes? This action cannot be undone.')
     ) {
       passService.clear()
-      alert('all passes have been removed')
+      toast('all passes have been removed')
     }
   }
 

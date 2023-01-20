@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MdExpandLess } from 'react-icons/md'
 import Modal from 'react-modal'
+import { ToastContainer } from 'react-toastify'
 import Header from '../../components/Header/Header'
 import NewPassForm from '../../components/NewPassForm/NewPassForm'
 import PassList from '../../components/PassList/PassList'
@@ -57,10 +58,19 @@ export default function HomePage() {
       </PassProvider>
       {topButton &&
         <button type='button' className='home-page__to-top' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} >
-
           <MdExpandLess />
         </button>
       }
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+      />
     </main>
   )
 }

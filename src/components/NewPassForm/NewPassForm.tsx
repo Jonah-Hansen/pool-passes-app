@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { usePasses } from '../../context/PassProvider'
 import * as validate from '../../helpers/validateInput'
 import { defaultErrorState, ErrorState } from '../../interfaces/error'
@@ -42,7 +43,7 @@ export default function NewPassForm({ close }: { close: () => void }) {
     newPass.phone = validate.phone(newPass.phone).message
     passService.add(newPass)
     setPasses(passService.getAll())
-    alert(`${newPass.firstName} ${newPass.lastName} successfully added`)
+    toast(`${newPass.firstName} ${newPass.lastName} successfully added`)
     close()
   }
 
